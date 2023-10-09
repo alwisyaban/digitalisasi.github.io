@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(78, 78, 89);
+}
+
+.navbar {
+  background-color: rgb(203, 200, 206);
+}
+.container a {
+  color: rgb(19, 20, 21);
+  font-weight: 500;
+}
+
+.card-header {
+  font-size: 15px;
+  background-color: rgb(225, 225, 158);
+  text-align: center;
+}
+
+.card-body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-header0 {
+  background-color: rgb(147, 60, 147);
+}
+.card-header1 {
+  background-color: rgb(100, 200, 110);
+}
+.card-header2 {
+  background-color: rgb(140, 80, 50);
+}
+.card-header3 {
+  background-color: rgb(130, 50, 220);
+}
+.card-header4 {
+  background-color: rgb(230, 202, 181);
+}
+.card-header5 {
+  background-color: rgb(218, 31, 118);
+}
+.card-header6 {
+  background-color: rgb(59, 205, 90);
+}
+.card-header7 {
+  background-color: rgb(164, 196, 68);
+}
+.card-header8 {
+  background-color: rgb(115, 92, 231);
+}
+.card-header9 {
+  background-color: rgb(219, 186, 186);
+}
+.card-header10 {
+  background-color: rgb(211, 228, 57);
+}
+.card-header11 {
+  background-color: rgb(242, 194, 105);
+}
+.card-header12 {
+  background-color: rgb(216, 189, 236);
+}
+.card-header13 {
+  background-color: rgb(58, 239, 13);
+}
+.card-header14 {
+  background-color: rgb(90, 104, 210);
+}
+.card-header15 {
+  background-color: rgb(196, 24, 196);
+}
+.card-header16 {
+  background-color: rgb(230, 241, 29);
+}
+.card-header17 {
+  background-color: rgb(229, 50, 50);
+}
+.card-header18 {
+  background-color: rgb(4, 216, 244);
+}
+.card-header19 {
+  background-color: rgb(175, 189, 180);
+}
+.card-header20 {
+  background-color: rgb(119, 228, 228);
+}
+.card-header21 {
+  background-color: rgb(119, 228, 228);
+}
+.btn {
+  width: 100%;
+}
