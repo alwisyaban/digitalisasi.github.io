@@ -3,9 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: bisque;
+}
 
+.nav-1 {
+  background-color: aqua;
+}
 .navbar {
-  background-color: rgb(203, 200, 206);
+  background-color: beige;
+  height: 80px;
 }
 
 .container a {
@@ -28,4 +35,16 @@ img {
 
 .dropdown-item {
   color: black;
+}
+
+footer {
+  background-color: beige;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+}
+
+.copy {
+  color: chocolate;
+  text-align: center;
 }
