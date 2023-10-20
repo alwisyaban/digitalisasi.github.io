@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jqc-1.12.4/dt-1.13.1/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css" />
+    <link rel="stylesheet" href="styleCapa.css" />
+    <title>QA LINE INJEKSI</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h3 class="text-center mb-4 mt-4">Form Permintaan Gowning</h3>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Jadwal</button>
+          <br />
+          <br />
+          <table id="tableData" class="table table-striped table-bordered mt-2 mb-2" style="width: 100%"></table>
+          <br />
+        </div>
+      </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Tambah</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form>
+              <input type="hidden" class="form-control" id="idProduk" />
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">NIK</label>
+                <input type="text" class="form-control" id="nikProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nama</label>
+                <input type="text" class="form-control" id="namaProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Departemen</label>
+                <input type="text" class="form-control" id="departemenProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Periode Shift</label>
+                <input type="text" class="form-control" id="shift_periodeProduk" required />
+              </div>
+              <!-- <div class="mb-3">
+                <label for="recipient-name" class="col-form-label"></label>
+                <input type="text" class="form-control" id="test2Produk" required />
+              </div> -->
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jqc-1.12.4/dt-1.13.1/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const BASE_URL = 'https://script.google.com/macros/s/AKfycbyNLztR4TprnwK3BKxYddxWxWZNTb9MJqn0hVBt9OCg1TNr2G0pmAEIrINQmd_U3Rjc/exec';
+        const table = $('#tableData').DataTable({
+          ajax: BASE_URL + '?action=get-product',
+          columns: [
+            {
+              title: 'id',
+              data: 'id',
+            },
+            {
+              title: 'NIK',
+              data: 'nik',
+            },
+            {
+              title: 'Nama',
+              data: 'nama',
+            },
+            {
+              title: 'Departemen',
+              data: 'departemen',
+            },
+            {
+              title: 'Periode Shift',
+              data: 'shift_periode',
+            },
+            {
+              title: 'Tanggal Gowning',
+              data: 'tgl_gowning',
+            },
+            {
+              title: 'Lokasi Gowning',
+              data: 'lokasi',
+            },
+            {
+              title: 'Status ',
+              data: 'status',
+            },
+            {
+              title: 'Keterangan',
+              data: 'keterangan',
+            },
+            // {
+            //   title: 'QA',
+            //   data: 'qa',
+            // },
+            // {
+            //   title: 'Project',
+            //   data: 'project',
+            // },
+            // {
+            //   title: 'Total',
+            //   data: 'total',
+            // },
+            // {
+            //   title: 'Edit',
+            //   targets: -1,
+            //   data: null,
+            //   defaultContent: '<button class="btn btn-warning" id="edit">Edit</button>',
+            // },
+          ],
+          rowId: 'id',
+          liveAjax: true,
+          responsive: true,
+        });
+
+        $('#tambahProduk').on('click', () => {
+          clear();
+          $('#myModal').modal('show');
+          //   $('#myModal .modal-title').text('Tambah Produk');
+        });
+
+        // $('#tableData tbody').on('click', '#edit', function () {
+        //   const data = table.row($(this).parents('tr')).data();
+        //   console.log(data);
+        //   $('#idProduk').val(data.id);
+        //   $('#namaProduk').val(data.nama);
+        //   $('#stokProduk').val(data.stok);
+        //   $('#hargaProduk').val(data.harga);
+        //   $('#testProduk').val(data.test);
+        //   $('#test2Produk').val(data.test2);
+        //   $('#myModal').modal('show');
+        //   $('#myModal .modal-title').text('Edit Produk');
+        // });
+
+        $('.modal-footer .btn-success').on('click', () => {
+          const nikProduk = $('#nikProduk').val();
+          const namaProduk = $('#namaProduk').val();
+          const departemenProduk = $('#departemenProduk').val();
+          const idProduk = $('#idProduk').val();
+          const shift_periodeProduk = $('#shift_periodeProduk').val();
+          //   const test2Produk = $('#test2Produk').val();
+
+          if (namaProduk == '' || nikProduk == '' || departemenProduk == '' || shift_periodeProduk == '') {
+            alert('Harap Lengkapi semua field !');
+            return;
+          }
+
+          let apiUrl = '';
+
+          if (idProduk) {
+            apiUrl = `${BASE_URL}?action=update&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&id=${idProduk}&shift_periode=${shift_periodeProduk}`;
+          } else {
+            apiUrl = `${BASE_URL}?action=insert&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&shift_periode=${shift_periodeProduk}`;
+          }
+
+          $.getJSON(apiUrl, function (result) {
+            alert(result.message);
+            location.reload();
+          });
+        });
+      });
+
+      function clear() {
+        $('#idProduk').val('');
+        $('#nikProduk').val('');
+        $('#namaProduk').val('');
+        $('#departemenProduk').val('');
+        $('#shift_PeriodeProduk').val('');
+      }
+    </script>
+  </body>
+</html>
