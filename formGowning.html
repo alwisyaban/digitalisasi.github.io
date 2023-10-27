@@ -8,15 +8,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jqc-1.12.4/dt-1.13.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css" />
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="styleIndex.css" />
-    <title>QA LINE INJEKSI</title>
+    <title>Daftar Stok Barang Toko Perlengkapan Bayi</title>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-sm">
       <div class="container">
-        <a class="navbar-brand" href="#">JADWAL GOWNING</a>
+        <a class="navbar-brand" href="#">QA NBL INJECTION</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,32 +24,30 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <!-- tes -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">QA INJEKSI</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/b7a413d4-0deb-44bb-9805-fb42a3a05d68">MONITORING CAPA</a></li>
-                <li><a class="dropdown-item" href="formGowning.html">DAFTAR GOWNING</a></li>
-                <li><a class="dropdown-item" href="updateDr.html">UPDATE DR DAILY</a></li>
-                <li><a class="dropdown-item" href="linkGrdrive.html">LINK GOOGLE DRIVE</a></li>
+                <li><a class="dropdown-item" href="/bostrap-5/Gsheet/google-sheet.html">List Dokumen</a></li>
+                <li><a class="dropdown-item" href="/bostrap-5//dokumen/dokumen.html">Kumpulan Link Gdrive</a></li>
+                <li><a class="dropdown-item" href="#">BRFT Daily</a></li>
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NBL INJEKSI 37</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="listGowning37.html">LIST GOWNING 37</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Data QC</a></li> -->
-                <!-- <li><a class="dropdown-item" href="#">Data QA</a></li> -->
+                <li><a class="dropdown-item" href="#">Data QS</a></li>
+                <li><a class="dropdown-item" href="#">Data QC</a></li>
+                <li><a class="dropdown-item" href="#">Data QA</a></li>
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NBL STERILE 39</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="listGowning39.html">LIST GOWNING 39</a></li>
-                <!-- <li><a class="dropdown-item" href="#">RKHP NBL 39</a></li> -->
-                <!-- <li><a class="dropdown-item" href="#">IPC PENGEMASAN</a></li> -->
+                <li><a class="dropdown-item" href="/bostrap-5//nblSterile/stokAtk/stokAtk.html">Stok ATK</a></li>
+                <li><a class="dropdown-item" href="#">RKHP NBL 39</a></li>
+                <li><a class="dropdown-item" href="#">IPC PENGEMASAN</a></li>
               </ul>
             </li>
             <!-- tes end -->
@@ -58,18 +55,20 @@
         </div>
       </div>
     </nav>
-    <br />
-    <br />
     <!-- Navbar End -->
-    <br />
-    <div class="container-fluid mt-3">
+
+    <a class="nav-link" href="index.html">Home</a>
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <!-- <h3 class="text-center mt-4">Form Permintaan Gowning</h3> -->
+          <h3 class="text-center mb-4 mt-4">Daftar Stok ...</h3>
+
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary mb-1" id="tambahProduk">+ Tambah Jadwal</button>
+          <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Produk</button>
+          <br />
           <br />
           <table id="tableData" class="table table-striped table-bordered mt-2 mb-2" style="width: 100%"></table>
+          <br />
           <br />
         </div>
       </div>
@@ -89,7 +88,7 @@
             <form>
               <input type="hidden" class="form-control" id="idProduk" />
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">NIK</label>
+                <label for="recipient-name" class="col-form-label">Nik</label>
                 <input type="text" class="form-control" id="nikProduk" required />
               </div>
               <div class="mb-3">
@@ -101,13 +100,17 @@
                 <input type="text" class="form-control" id="departemenProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Periode Shift</label>
+                <label for="recipient-name" class="col-form-label">Tanggal Training</label>
+                <input type="text" class="form-control" id="tgl_trainingProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Hasil Training</label>
+                <input type="text" class="form-control" id="hasil_trainingProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Shift Periode</label>
                 <input type="text" class="form-control" id="shift_periodeProduk" required />
               </div>
-              <!-- <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" id="test2Produk" required />
-              </div> -->
             </form>
           </div>
           <!-- Modal footer -->
@@ -126,19 +129,18 @@
     <script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
     <script>
       $(document).ready(function () {
-        const BASE_URL = 'https://script.google.com/macros/s/AKfycbyNLztR4TprnwK3BKxYddxWxWZNTb9MJqn0hVBt9OCg1TNr2G0pmAEIrINQmd_U3Rjc/exec';
+        const BASE_URL = 'https://script.google.com/macros/s/AKfycbw7PAjJr0smWlMaCTee4Dvw-TiGOD6zEPP-qfmzv8XGAOqHuSHd0LN6ShgN6BF78IO9/exec';
         const table = $('#tableData').DataTable({
           ajax: BASE_URL + '?action=get-product',
           columns: [
             {
-              title: 'No',
+              title: 'ID',
               data: 'id',
             },
             {
-              title: 'NIK',
+              title: 'Nik',
               data: 'nik',
             },
             {
@@ -150,7 +152,15 @@
               data: 'departemen',
             },
             {
-              title: 'Periode Shift',
+              title: 'Tanggal Training',
+              data: 'tgl_training',
+            },
+            {
+              title: 'Hasil Training',
+              data: 'hasil_training',
+            },
+            {
+              title: 'Shift Periode',
               data: 'shift_periode',
             },
             {
@@ -158,35 +168,23 @@
               data: 'tgl_gowning',
             },
             {
-              title: 'Lokasi Gowning',
+              title: 'Lokasi',
               data: 'lokasi',
             },
             {
-              title: 'Status ',
+              title: 'Status',
               data: 'status',
             },
             {
               title: 'Keterangan',
               data: 'keterangan',
             },
-            // {
-            //   title: 'QA',
-            //   data: 'qa',
-            // },
-            // {
-            //   title: 'Project',
-            //   data: 'project',
-            // },
-            // {
-            //   title: 'Total',
-            //   data: 'total',
-            // },
-            // {
-            //   title: 'Edit',
-            //   targets: -1,
-            //   data: null,
-            //   defaultContent: '<button class="btn btn-warning" id="edit">Edit</button>',
-            // },
+            {
+              title: 'Edit',
+              targets: -1,
+              data: null,
+              defaultContent: '<button class="btn btn-warning" id="edit">Edit</button>',
+            },
           ],
           rowId: 'id',
           liveAjax: true,
@@ -196,41 +194,50 @@
         $('#tambahProduk').on('click', () => {
           clear();
           $('#myModal').modal('show');
-          //   $('#myModal .modal-title').text('Tambah Produk');
+          //$('#myModal .modal-title').text('Tambah Produk');
         });
 
-        // $('#tableData tbody').on('click', '#edit', function () {
-        //   const data = table.row($(this).parents('tr')).data();
-        //   console.log(data);
-        //   $('#idProduk').val(data.id);
-        //   $('#namaProduk').val(data.nama);
-        //   $('#stokProduk').val(data.stok);
-        //   $('#hargaProduk').val(data.harga);
-        //   $('#testProduk').val(data.test);
-        //   $('#test2Produk').val(data.test2);
-        //   $('#myModal').modal('show');
-        //   $('#myModal .modal-title').text('Edit Produk');
-        // });
+        $('#tableData tbody').on('click', '#edit', function () {
+          const data = table.row($(this).parents('tr')).data();
+          console.log(data);
+          $('#idProduk').val(data.id);
+          $('#nikProduk').val(data.nik);
+          $('#namaProduk').val(data.nama);
+          $('#departemenProduk').val(data.departemen);
+          $('#tgl_trainingProduk').val(data.tgl_training);
+          $('#hasil_trainingProduk').val(data.hasil_training);
+          $('#shift_periodeProduk').val(data.shift_periode);
+          $('#tgl_gowning2Produk').val(data.tgl_gowning);
+          $('#lokasiProduk').val(data.lokasi);
+          $('#statusProduk').val(data.status);
+          $('#keteranganProduk').val(data.keterangan);
+          $('#myModal').modal('show');
+          $('#myModal .modal-title').text('Edit Produk');
+        });
 
         $('.modal-footer .btn-success').on('click', () => {
           const nikProduk = $('#nikProduk').val();
           const namaProduk = $('#namaProduk').val();
           const departemenProduk = $('#departemenProduk').val();
           const idProduk = $('#idProduk').val();
+          const tgl_trainingProduk = $('#tgl_trainingProduk').val();
+          const hasil_trainingProduk = $('#hasil_trainingProduk').val();
           const shift_periodeProduk = $('#shift_periodeProduk').val();
-          //   const test2Produk = $('#test2Produk').val();
+          const tgl_gowningProduk = $('#tgl_gowningProduk').val();
+          const lokasiProduk = $('#lokasiProduk').val();
+          const statusProduk = $('#statusProduk').val();
+          const keteranganProduk = $('#keteranganProduk').val();
 
-          if (namaProduk == '' || nikProduk == '' || departemenProduk == '' || shift_periodeProduk == '') {
+          if (namaProduk == '' || nikProduk == '' || tgl_trainingProduk == '') {
             alert('Harap Lengkapi semua field !');
             return;
           }
 
           let apiUrl = '';
-
           if (idProduk) {
-            apiUrl = `${BASE_URL}?action=update&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&id=${idProduk}&shift_periode=${shift_periodeProduk}`;
+            apiUrl = `${BASE_URL}?action=update&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&id=${idProduk}&tgl_training=${tgl_trainingProduk}&hasil_training=${hasil_trainingProduk}&shift_periode=${shift_periodeProduk}&tgl_gownig=${tgl_gowningProduk}&lokasi=${lokasiProduk}&status=${statusProduk}&keterangan=${keteranganProduk}`;
           } else {
-            apiUrl = `${BASE_URL}?action=insert&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&shift_periode=${shift_periodeProduk}`;
+            apiUrl = `${BASE_URL}?action=insert&nik=${nikProduk}&nama=${namaProduk}&departemen=${departemenProduk}&tgl_training=${tgl_trainingProduk}&hasil_training=${hasil_trainingProduk}&shift_periode=${shift_periodeProduk}&tgl_gownig=${tgl_gowningProduk}&lokasi=${lokasiProduk}&status=${statusProduk}&keterangan=${keteranganProduk}`;
           }
 
           $.getJSON(apiUrl, function (result) {
@@ -242,10 +249,11 @@
 
       function clear() {
         $('#idProduk').val('');
-        $('#nikProduk').val('');
         $('#namaProduk').val('');
-        $('#departemenProduk').val('');
-        $('#shift_PeriodeProduk').val('');
+        $('#stokProduk').val('');
+        $('#hargaProduk').val('');
+        $('#testProduk').val('');
+        $('#test2Produk').val('');
       }
     </script>
   </body>
