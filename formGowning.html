@@ -9,9 +9,27 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css" />
     <link rel="stylesheet" href="styleIndex.css" />
-    <title>Daftar Stok Barang Toko Perlengkapan Bayi</title>
+    <title>Daftar Gowning</title>
+    <style>
+      body {
+        background-color: aquamarine;
+      }
+      table {
+        font-size: 11px;
+        text-align: center;
+        font-weight: 800;
+        background-color: aliceblue;
+        background-repeat: inherit;
+      }
+      th {
+        font-size: 12px;
+        text-align: center;
+        font-weight: 900;
+      }
+    </style>
   </head>
   <body>
+    <!-- Navbar -->
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-sm">
       <div class="container">
@@ -24,30 +42,33 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
+            <!-- tes -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">QA INJEKSI</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/bostrap-5/Gsheet/google-sheet.html">List Dokumen</a></li>
-                <li><a class="dropdown-item" href="/bostrap-5//dokumen/dokumen.html">Kumpulan Link Gdrive</a></li>
-                <li><a class="dropdown-item" href="#">BRFT Daily</a></li>
+                <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/b7a413d4-0deb-44bb-9805-fb42a3a05d68">MONITORING CAPA</a></li>
+                <li><a class="dropdown-item" href="updateDr.html">UPDATE DR DAILY</a></li>
+                <li><a class="dropdown-item" href="formGowning.html">DAFTAR GOWNING</a></li>
+                <li><a class="dropdown-item" href="listKejernihan.html">LIST KEJERNIHAN</a></li>
+                <li><a class="dropdown-item" href="linkGrdrive.html">LINK GOOGLE DRIVE</a></li>
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NBL INJEKSI 37</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Data QS</a></li>
-                <li><a class="dropdown-item" href="#">Data QC</a></li>
-                <li><a class="dropdown-item" href="#">Data QA</a></li>
+                <li><a class="dropdown-item" href="listGowning37.html">LIST GOWNING 37</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Data QC</a></li> -->
+                <!-- <li><a class="dropdown-item" href="#">Data QA</a></li> -->
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NBL STERILE 39</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/bostrap-5//nblSterile/stokAtk/stokAtk.html">Stok ATK</a></li>
-                <li><a class="dropdown-item" href="#">RKHP NBL 39</a></li>
-                <li><a class="dropdown-item" href="#">IPC PENGEMASAN</a></li>
+                <li><a class="dropdown-item" href="listGowning39.html">LIST GOWNING 39</a></li>
+                <!-- <li><a class="dropdown-item" href="#">RKHP NBL 39</a></li> -->
+                <!-- <li><a class="dropdown-item" href="#">IPC PENGEMASAN</a></li> -->
               </ul>
             </li>
             <!-- tes end -->
@@ -55,16 +76,17 @@
         </div>
       </div>
     </nav>
+    <br />
+    <br />
     <!-- Navbar End -->
-
     <a class="nav-link" href="index.html">Home</a>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h3 class="text-center mb-4 mt-4">Daftar Stok ...</h3>
+          <!-- <h3 class="text-center mb-4 mt-4">Daftar Stok ...</h3> -->
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Produk</button>
+          <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Personel</button>
           <br />
           <br />
           <table id="tableData" class="table table-striped table-bordered mt-2 mb-2" style="width: 100%"></table>
@@ -108,7 +130,7 @@
                 <input type="text" class="form-control" id="hasil_trainingProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Shift Periode</label>
+                <label for="recipient-name" class="col-form-label">Shift Periode (2 minggu)</label>
                 <input type="text" class="form-control" id="shift_periodeProduk" required />
               </div>
             </form>
@@ -131,7 +153,7 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap.min.js"></script>
     <script>
       $(document).ready(function () {
-        const BASE_URL = 'https://script.google.com/macros/s/AKfycbw7PAjJr0smWlMaCTee4Dvw-TiGOD6zEPP-qfmzv8XGAOqHuSHd0LN6ShgN6BF78IO9/exec';
+        const BASE_URL = 'https://script.google.com/macros/s/AKfycbzMqpwj1HtGKFupqaT7iIhj7at63GYhi-6NWjudLhKDtgngCvqgkZKXKfNs4qGZeMNs/exec';
         const table = $('#tableData').DataTable({
           ajax: BASE_URL + '?action=get-product',
           columns: [
@@ -249,11 +271,16 @@
 
       function clear() {
         $('#idProduk').val('');
+        $('#nikProduk').val('');
         $('#namaProduk').val('');
-        $('#stokProduk').val('');
-        $('#hargaProduk').val('');
-        $('#testProduk').val('');
-        $('#test2Produk').val('');
+        $('#departemenProduk').val('');
+        $('#tgl_trainingProduk').val('');
+        $('hasil_trainingProduk').val('');
+        $('#shift_periodeProduk').val('');
+        $('#tgl_gowningProduk').val('');
+        $('#lokasiProduk').val('');
+        $('#statusProduk').val('');
+        $('#keteranganProduk').val('');
       }
     </script>
   </body>

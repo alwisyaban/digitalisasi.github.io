@@ -8,11 +8,29 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jqc-1.12.4/dt-1.13.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css" />
-    <link rel="stylesheet" href="styleCapa.css" />
-    <!-- <link rel="stylesheet" href="styleIndex.css">   -->
-    <title>QA LINE INJEKSI</title>
+    <link rel="stylesheet" href="styleIndex.css" />
+    <title>List Kejernihan</title>
+    <style>
+      body {
+        background-color: chocolate;
+      }
+      table {
+        font-size: 9px;
+        justify-content: center;
+        font-weight: 700;
+        background-color: pink;
+        background-repeat: inherit;
+      }
+      th {
+        justify-content: right;
+        font-weight: 850;
+        color: rebeccapurple;
+        font-size: 9.5px;
+      }
+    </style>
   </head>
   <body>
+    <!-- Navbar -->
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-sm">
       <div class="container">
@@ -30,8 +48,8 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">QA INJEKSI</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/b7a413d4-0deb-44bb-9805-fb42a3a05d68">MONITORING CAPA</a></li>
-                <li><a class="dropdown-item" href="formGowning.html">DAFTAR GOWNING</a></li>
                 <li><a class="dropdown-item" href="updateDr.html">UPDATE DR DAILY</a></li>
+                <li><a class="dropdown-item" href="formGowning.html">DAFTAR GOWNING</a></li>
                 <li><a class="dropdown-item" href="listKejernihan.html">LIST KEJERNIHAN</a></li>
                 <li><a class="dropdown-item" href="linkGrdrive.html">LINK GOOGLE DRIVE</a></li>
               </ul>
@@ -61,15 +79,20 @@
     </nav>
     <br />
     <br />
+    <br />
     <!-- Navbar End -->
+    <a class="nav-link" href="index.html"></a>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h3 class="text-center mb-4 mt-4">UP DATE DR DAILY</h3>
+          <!-- <h3 class="text-center mb-4 mt-4">Daftar Stok ...</h3> -->
 
           <!-- Button trigger modal -->
-          <!-- <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Produk</button> -->
-          <table id="tableData" class="table table-striped table-bordered mt-2 mb-2" style="width: 100%"></table>
+          <!-- <button type="button" class="btn btn-primary" id="tambahProduk">+ Tambah Personel</button> -->
+          <br />
+          <br />
+          <table id="tableData" class="table table-striped table-bordered mt-2 mb-2 text-center" style="width: 100%"></table>
+          <br />
           <br />
         </div>
       </div>
@@ -89,24 +112,28 @@
             <form>
               <input type="hidden" class="form-control" id="idProduk" />
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
+                <label for="recipient-name" class="col-form-label">Nama</label>
                 <input type="text" class="form-control" id="namaProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" id="stokProduk" required />
+                <label for="recipient-name" class="col-form-label">Inisial</label>
+                <input type="text" class="form-control" id="inisialProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" id="hargaProduk" required />
+                <label for="recipient-name" class="col-form-label">Departemen</label>
+                <input type="text" class="form-control" id="deptProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" id="testProduk" required />
+                <label for="recipient-name" class="col-form-label">Tanggal Kualifikasi</label>
+                <input type="text" class="form-control" id="tgl_kfProduk" required />
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" id="test2Produk" required />
+                <label for="recipient-name" class="col-form-label">Bentuk Sediaan</label>
+                <input type="text" class="form-control" id="bsProduk" required />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Kualifikasi / Re-Kualifikasi</label>
+                <input type="text" class="form-control" id="kf_rkProduk" required />
               </div>
             </form>
           </div>
@@ -128,58 +155,66 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap.min.js"></script>
     <script>
       $(document).ready(function () {
-        const BASE_URL = 'https://script.google.com/macros/s/AKfycbyqYb0WElYvuVoOELae0vlZwIRievrp5lXKPbGPd2KNu7cUWIdE5uu872eQMh7tkUU1CQ/exec';
+        const BASE_URL = 'https://script.google.com/macros/s/AKfycby-ZXpAopoirjvTpdVO30S9oLFH7m5k7gI3P3DqOUDxmomLQxYwd6qZ10ZeH6f6HmEkYg/exec';
         const table = $('#tableData').DataTable({
           ajax: BASE_URL + '?action=get-product',
           columns: [
             {
-              title: 'No',
-              data: 'no',
+              title: 'ID',
+              data: 'id',
             },
             {
-              title: 'No DR',
-              data: 'no_DR',
+              title: 'NAMA',
+              data: 'nama',
             },
             {
-              title: 'BN',
-              data: 'bn',
+              title: 'INISIAL',
+              data: 'inisial',
             },
             {
-              title: 'Problem Desciption',
-              data: 'problem_Description',
+              title: 'DEPARTEMEN',
+              data: 'dept',
             },
             {
-              title: 'Status DR',
-              data: 'status_DR',
+              title: 'TANGGAL KUALIFIKASI',
+              data: 'tgl_kf',
             },
             {
-              title: 'Tanggal Regis',
-              data: 'tanggal_Regis',
+              title: 'BENTUK SEDIAAN',
+              data: 'bs',
             },
             {
-              title: 'Tanggal Ekspedisi',
-              data: 'tanggal_Ekspedisi',
+              title: 'KUALIFIKASI / RE-KUALIFIKASI',
+              data: 'kf_rk',
             },
-            // {
-            //   title: 'Logistic',
-            //   data: 'logistic',
-            // },
-            // {
-            //   title: 'PPIC',
-            //   data: 'ppic',
-            // },
-            // {
-            //   title: 'QA',
-            //   data: 'qa',
-            // },
-            // {
-            //   title: 'Project',
-            //   data: 'project',
-            // },
-            // {
-            //   title: 'Total',
-            //   data: 'total',
-            // },
+            {
+              title: 'TEMUAN REJECT KE-1',
+              data: 'tr_1',
+            },
+            {
+              title: 'KESALAHAN TEMUAN KE-1',
+              data: 'kt_1',
+            },
+            {
+              title: 'TEMUAN REJECT KE-2',
+              data: 'tr_2',
+            },
+            {
+              title: 'KESALAHAN TEMUAN KE-2',
+              data: 'kt_2',
+            },
+            {
+              title: 'TEMUAN REJECT KE -3',
+              data: 'tr_3',
+            },
+            {
+              title: 'KESALAHAN TEMUAN KE-3',
+              data: 'kt_3',
+            },
+            {
+              title: 'HASIL',
+              data: 'hasil',
+            },
             // {
             //   title: 'Edit',
             //   targets: -1,
@@ -187,49 +222,58 @@
             //   defaultContent: '<button class="btn btn-warning" id="edit">Edit</button>',
             // },
           ],
-          rowId: 'no',
+          rowId: 'id',
           liveAjax: true,
           responsive: true,
         });
 
-        // $('#tambahProduk').on('click', () => {
-        //   clear();
-        //   $('#myModal').modal('show');
-        //   //$('#myModal .modal-title').text('Tambah Produk');
-        // });
+        $('#tambahProduk').on('click', () => {
+          clear();
+          $('#myModal').modal('show');
+          //$('#myModal .modal-title').text('Tambah Produk');
+        });
 
         // $('#tableData tbody').on('click', '#edit', function () {
         //   const data = table.row($(this).parents('tr')).data();
         //   console.log(data);
         //   $('#idProduk').val(data.id);
         //   $('#namaProduk').val(data.nama);
-        //   $('#stokProduk').val(data.stok);
-        //   $('#hargaProduk').val(data.harga);
-        //   $('#testProduk').val(data.test);
-        //   $('#test2Produk').val(data.test2);
+        //   $('#inisialProduk').val(data.inisial);
+        //   $('#deptProduk').val(data.deptemen);
+        //   $('#tgl_kfProduk').val(data.tgl_kf);
+        //   $('#bsProduk').val(data.bs);
+        //   $('#kf_rkProduk').val(data.kf_rk);
+        //   $('#tgl_gowning2Produk').val(data.tgl_gowning);
+        //   $('#lokasiProduk').val(data.lokasi);
+        //   $('#statusProduk').val(data.status);
+        //   $('#keteranganProduk').val(data.keterangan);
         //   $('#myModal').modal('show');
         //   $('#myModal .modal-title').text('Edit Produk');
         // });
 
         // $('.modal-footer .btn-success').on('click', () => {
         //   const namaProduk = $('#namaProduk').val();
-        //   const stokProduk = $('#stokProduk').val();
-        //   const hargaProduk = $('#hargaProduk').val();
+        //   const inisialProduk = $('inisialProduk').val();
+        //   const deptProduk = $('#deptProduk').val();
         //   const idProduk = $('#idProduk').val();
-        //   const testProduk = $('#testProduk').val();
-        //   const test2Produk = $('#test2Produk').val();
+        //   const tgl_kfProduk = $('#tgl_kfProduk').val();
+        //   const bsProduk = $('#bsProduk').val();
+        //   const kf_rkProduk = $('#kf_rkProduk').val();
+        //   const tgl_gowningProduk = $('#tgl_gowningProduk').val();
+        //   const lokasiProduk = $('#lokasiProduk').val();
+        //   const statusProduk = $('#statusProduk').val();
+        //   const keteranganProduk = $('#keteranganProduk').val();
 
-        //   if (namaProduk == '' || stokProduk == '' || hargaProduk == '') {
+        //   if (namaProduk == '' || deptProduk == '' || kf_rkProduk == '') {
         //     alert('Harap Lengkapi semua field !');
         //     return;
         //   }
 
         //   let apiUrl = '';
-
         //   if (idProduk) {
-        //     apiUrl = `${BASE_URL}?action=update&nama=${namaProduk}&stok=${stokProduk}&harga=${hargaProduk}&id=${idProduk}&test=${testProduk}&test2=${test2Produk}`;
+        //     apiUrl = `${BASE_URL}?action=update&id=${idProduk}&nama=${namaProduk}&inisial=${inisialProduk}&dept=${departemenProduk}&tgl_kf=${tgl_kfProduk}&bs=${bsProduk}&kf_rl=${kf_rkProduk}`;
         //   } else {
-        //     apiUrl = `${BASE_URL}?action=insert&nama=${namaProduk}&stok=${stokProduk}&harga=${hargaProduk}&test=${testProduk}&test2=${test2Produk}`;
+        //     apiUrl = `${BASE_URL}?action=insert&id=${idProduk}&nik=${namaProduk}&inisial=${inisialProduk}&departemen=${departemenProduk}&tgl_kf=${tgl_kfProduk}&bs=${bsProduk}&kf_rl=${kf_rkProduk}`;
         //   }
 
         //   $.getJSON(apiUrl, function (result) {
@@ -241,11 +285,16 @@
 
       // function clear() {
       //   $('#idProduk').val('');
+      //   $('#nikProduk').val('');
       //   $('#namaProduk').val('');
-      //   $('#stokProduk').val('');
-      //   $('#hargaProduk').val('');
-      //   $('#testProduk').val('');
-      //   $('#test2Produk').val('');
+      //   $('#departemenProduk').val('');
+      //   $('#tgl_trainingProduk').val('');
+      //   $('hasil_trainingProduk').val('');
+      //   $('#shift_periodeProduk').val('');
+      //   $('#tgl_gowningProduk').val('');
+      //   $('#lokasiProduk').val('');
+      //   $('#statusProduk').val('');
+      //   $('#keteranganProduk').val('');
       // }
     </script>
   </body>
